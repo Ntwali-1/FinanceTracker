@@ -58,8 +58,9 @@ public class JwtService {
     @Value("${application.security.jwt.expiration}")
     private long jwtExpiration;
 
-    @Value("${application.security.jwt.refresh-token.expiration}")
-    private long refreshExpiration;
+    /* @Value("${application.security.jwt.refresh-token.expiration}")
+    * private long refreshExpiration;
+    */
 
     // Constants for JWT claims
     private static final String AUTHORITIES_CLAIM = "authorities";
@@ -152,20 +153,13 @@ public class JwtService {
         return buildToken(extraClaims, userDetails, jwtExpiration);
     }
 
-    /**
-     * Generate refresh token for token renewal
-     * Contains minimal claims for security
-     *
-     * @param userDetails authenticated user details
-     * @return JWT refresh token string
-     */
-    public String generateRefreshToken(UserDetails userDetails) {
-        Map<String, Object> refreshClaims = new HashMap<>();
-        refreshClaims.put(TOKEN_TYPE_CLAIM, "refresh");
+    /*public String generateRefreshToken(UserDetails userDetails) {
+      *  Map<String, Object> refreshClaims = new HashMap<>();
+      *  refreshClaims.put(TOKEN_TYPE_CLAIM, "refresh");
 
-        logger.debug("Generating refresh token for user: {}", userDetails.getUsername());
-        return buildToken(refreshClaims, userDetails, refreshExpiration);
-    }
+      * logger.debug("Generating refresh token for user: {}", userDetails.getUsername());
+      *  return buildToken(refreshClaims, userDetails, refreshExpiration);
+    }*/
 
     /**
      * Validate JWT token against user details
@@ -323,7 +317,7 @@ public class JwtService {
         return jwtExpiration;
     }
 
-    public long getRefreshExpiration() {
-        return refreshExpiration;
-    }
+    /*public long getRefreshExpiration() {
+    *    return refreshExpiration;
+    }*/
 }

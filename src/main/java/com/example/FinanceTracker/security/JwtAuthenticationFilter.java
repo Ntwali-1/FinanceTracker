@@ -23,17 +23,17 @@ import java.util.stream.Collectors;
 
 /**
  * JWT Authentication Filter
- *
+
  * This filter intercepts incoming HTTP requests to validate JWT tokens and set up
  * Spring Security authentication context.
- *
+
  * Features:
  * - Extracts JWT tokens from Authorization header
  * - Validates tokens and loads user details
  * - Sets up Spring Security authentication context
  * - Handles authorities from JWT claims
  * - Graceful error handling
- *
+
  * Usage:
  * 1. Update package name to match your project
  * 2. Customize SKIP_FILTER_URLS array for endpoints to skip
@@ -54,8 +54,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      * Customize this array based on your public endpoints
      */
     private static final String[] SKIP_FILTER_URLS = {
-            "/api/auth/",
-            "/api/public/",
+            "/users/create",
             "/swagger",
             "/v2/api-docs",
             "/v3/api-docs",
