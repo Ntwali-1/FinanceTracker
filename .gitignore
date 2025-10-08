@@ -32,5 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
-### pom.xml ###
-pom.xml
+### Hide sensitive config files ###
+src/main/resources/application.properties
+
+
