@@ -3,6 +3,7 @@ package com.example.FinanceTracker.users;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Getter
@@ -16,5 +17,4 @@ public class User {
 
     private String email;
     private String password;
-    private String confirmPassword;
 }

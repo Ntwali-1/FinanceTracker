@@ -17,18 +17,18 @@ public class UserService {
     }
 
     public ResponseEntity<User> create(SignupRequest signupRequest) {
-        User user = new User();
-        user.setEmail(signupRequest.getEmail());
 
         if(!signupRequest.getPassword().equals(signupRequest.getConfirmPassword())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
+        User user = new User();
+        user.setEmail(signupRequest.getEmail());
         user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
 
         try{
-            userRepository.save(user);
-            return new ResponseEntity<>(user, HttpStatus.CREATED);
+            User savedUser = userRepository.save(user);
+            return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
