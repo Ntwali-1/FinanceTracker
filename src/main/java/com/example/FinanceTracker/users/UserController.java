@@ -35,6 +35,8 @@ public class UserController {
         User savedUser = userService.create(signupRequest).getBody();
         assert savedUser != null;
         AuthResponse result = new AuthResponse(savedUser);
+
+        var token = jwtService.generateToken(savedUser.getEmail());
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
